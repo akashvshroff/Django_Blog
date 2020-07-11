@@ -11,6 +11,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.db.models import Q
 
 
 def home(request):
@@ -24,7 +25,14 @@ class PostListView(ListView):
     model = Post
     template_name = 'Blog/home.html'
     context_object_name = 'posts'
-    ordering = ['-date_posted']
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            posts = Post.objects.filter(title__icontains=query)
+            return posts
+        else:
+            return Post.objects.all().order_by('-date_posted')
 
 
 class PostDetailView(DetailView):

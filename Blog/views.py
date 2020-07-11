@@ -22,17 +22,22 @@ def home(request):
 
 
 class PostListView(ListView):
-    model = Post
     template_name = 'Blog/home.html'
-    context_object_name = 'posts'
 
     def get_queryset(self):
-        query = self.request.GET.get('q')
-        if query:
-            posts = Post.objects.filter(title__icontains=query)
-            return posts
+        self.query = self.request.GET.get('q')
+        self.posts = Post.objects.all().order_by('-date_posted')
+        if self.query:
+            self.posts = Post.objects.filter(
+                Q(title__icontains=self.query))
         else:
-            return Post.objects.all().order_by('-date_posted')
+            self.query = 'Search...'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['query'] = self.query
+        context['posts'] = self.posts
+        return context
 
 
 class PostDetailView(DetailView):

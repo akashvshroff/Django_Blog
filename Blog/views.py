@@ -28,10 +28,14 @@ class PostListView(ListView):
         self.query = self.request.GET.get('q')
         self.posts = Post.objects.all().order_by('-date_posted')
         if self.query:
-            self.posts = Post.objects.filter(
-                Q(title__icontains=self.query) | Q(
-                    content__icontains=self.query) | Q(author__icontains=self.query)
-            )
+            self.posts = []
+            words = self.query.split()
+            for word in words:
+                self.posts.append(Post.objects.filter(
+                    Q(title__icontains=word) | Q(
+                        content__icontains=word)
+                ).distinct())
+            self.posts = list(set(self.posts))[0]
         else:
             self.query = 'Search...'
 

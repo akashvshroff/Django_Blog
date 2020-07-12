@@ -1,5 +1,19 @@
 {% extends 'Blog/base.html' %}
 {% block content %}
-  <h1>Welcome to the blog</h1>
-  <p>This is the blog!</p>
+  <h1 class='mb-4'>Welcome.</h1>
+  <p class = 'lead mt-1'>Use this blog as a database for your recipes!</p>
+  <p class = 'lead'>Make a profile, add recipes and view other's recipes too. Search for all your favourite, delicious snacks - all in one place!</p>
+  {% if user.is_authenticated %}
+    <p class='lead'>
+      Ready to start?<a class = 'ml-2' href="{% url 'post-create' %}">Add a post!</a>
+    </p>
+  {% else %}
+    <p class='lead'>
+      Ready to start?
+      <a class = 'ml-1' href="{% url 'register'%}">Sign Up</a>
+      or
+      <a class = 'ml-1' href="{% url 'login'%}">Login.</a>
+    </p>
+  {% endif %}
+
 {% endblock content %}

@@ -59,13 +59,12 @@
         </div>
         <div class="col-md-4">
           <div class="content-section">
-            <h3>Latest Posts</h3>
-            <p class='text-muted'>Click below and see the latest recipes that have been added.
+            <h3>Feeling Lucky?</h3>
+            <p class='text-muted'> Click on these random posts and see where they lead!
               <ul class="list-group">
-                <li class="list-group-item list-group-item-light">Latest Posts</li>
-                <li class="list-group-item list-group-item-light">Announcements</li>
-                <li class="list-group-item list-group-item-light">Calendars</li>
-                <li class="list-group-item list-group-item-light">etc</li>
+                {%for post in random_posts%}
+                  <li class="list-group-item list-group-item-light"><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></li>
+                {% endfor %}
               </ul>
             </p>
           </div>

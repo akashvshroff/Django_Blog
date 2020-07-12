@@ -12,13 +12,7 @@ from django.contrib import messages
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
-
-
-def home(request):
-    context = {
-        'posts': Post.objects.all()
-    }
-    return render(request, 'Blog/home.html', context)
+import random
 
 
 class PostListView(ListView):
@@ -43,11 +37,17 @@ class PostListView(ListView):
         context = super().get_context_data(**kwargs)
         context['query'] = self.query
         context['posts'] = self.posts
+        context['random_posts'] = random.sample(list(Post.objects.all()), 5)
         return context
 
 
 class PostDetailView(DetailView):
     model = Post
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['random_posts'] = random.sample(list(Post.objects.all()), 5)
+        return context
 
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -66,6 +66,11 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         messages.success(self.request, self.success_message % obj.__dict__)
         return super(PostDeleteView, self).delete(request, *args, **kwargs)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['random_posts'] = random.sample(list(Post.objects.all()), 5)
+        return context
+
 
 class PostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Post
@@ -82,6 +87,11 @@ class PostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
             cleaned_data,
             title=self.object.title,
         )
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['random_posts'] = random.sample(list(Post.objects.all()), 5)
+        return context
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
@@ -105,6 +115,15 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixi
             title=self.object.title,
         )
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['random_posts'] = random.sample(list(Post.objects.all()), 5)
+        return context
+
 
 def about(request):
-    return render(request, 'Blog/about.html', {'title': 'about'})
+    context = {
+        'random_posts': random.sample(list(Post.objects.all()), 5),
+        'title': 'about'
+    }
+    return render(request, 'Blog/about.html', context)

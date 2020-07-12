@@ -37,7 +37,8 @@ class PostListView(ListView):
         context = super().get_context_data(**kwargs)
         context['query'] = self.query
         context['posts'] = self.posts
-        context['random_posts'] = random.sample(list(Post.objects.all()), 5)
+        size = 5 if Post.objects.count() >= 5 else Post.objects.count()
+        context['random_posts'] = random.sample(list(Post.objects.all()), size)
         return context
 
 
@@ -46,7 +47,8 @@ class PostDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['random_posts'] = random.sample(list(Post.objects.all()), 5)
+        size = 5 if Post.objects.count() >= 5 else Post.objects.count()
+        context['random_posts'] = random.sample(list(Post.objects.all()), size)
         return context
 
 
@@ -68,7 +70,8 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['random_posts'] = random.sample(list(Post.objects.all()), 5)
+        size = 5 if Post.objects.count() >= 5 else Post.objects.count()
+        context['random_posts'] = random.sample(list(Post.objects.all()), size)
         return context
 
 
@@ -90,7 +93,8 @@ class PostCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['random_posts'] = random.sample(list(Post.objects.all()), 5)
+        size = 5 if Post.objects.count() >= 5 else Post.objects.count()
+        context['random_posts'] = random.sample(list(Post.objects.all()), size)
         return context
 
 
@@ -117,13 +121,15 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixi
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['random_posts'] = random.sample(list(Post.objects.all()), 5)
+        size = 5 if Post.objects.count() >= 5 else Post.objects.count()
+        context['random_posts'] = random.sample(list(Post.objects.all()), size)
         return context
 
 
 def about(request):
+    size = 5 if Post.objects.count() >= 5 else Post.objects.count()
     context = {
-        'random_posts': random.sample(list(Post.objects.all()), 5),
+        'random_posts': random.sample(list(Post.objects.all()), size),
         'title': 'about'
     }
     return render(request, 'Blog/about.html', context)

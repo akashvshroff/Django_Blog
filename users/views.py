@@ -15,7 +15,13 @@ def register(request):
             return redirect('login')
     else:
         form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+        size = 5 if Post.objects.count() >= 5 else Post.objects.count()
+        context = {
+            'random_posts': random.sample(list(Post.objects.all()), size),
+            'form': form
+        }
+
+    return render(request, 'users/register.html', context)
 
 
 @login_required
@@ -31,8 +37,10 @@ def profile(request):
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
-    context = {
-        'u_form': u_form,
-        'p_form': p_form
-    }
+        size = 5 if Post.objects.count() >= 5 else Post.objects.count()
+        context = {
+            'random_posts': random.sample(list(Post.objects.all()), size),
+            'u_form': u_form,
+            'p_form': p_form
+        }
     return render(request, 'users/profile.html', context)

@@ -57,6 +57,7 @@
           {% endif %}
           {% block content %}{% endblock %}
         </div>
+        {%if random_posts %}
         <div class="col-md-4">
           <div class="content-section">
             <h3>Feeling Lucky?</h3>
@@ -69,8 +70,21 @@
             </p>
           </div>
         </div>
+        {% endif %}
       </div>
     </main>
+    <div class="footer">
+      <div class="footer-content">
+        <p class="lead font-weight-lighter text-center">
+          Want your own website? Drop me an email at
+          <a class="lead" href="mailto:akushroff@gmail.com">akushroff@gmail.com.</a>
+        </p>
+      </div>
+      <div class="footer-bottom">
+        <small class = "lead text-center">Designed by Akash Vikram Shroff.</small>
+      </div>
+
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

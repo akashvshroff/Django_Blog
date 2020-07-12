@@ -103,3 +103,19 @@ a.article-title:hover {
     flex-direction: column;
     align-items: stretch;
   }
+
+.footer {
+  color: #5f788a;
+  height: 60px;
+  position: relative;
+}
+
+.footer .footer-bottom{
+  height: 40px;
+  text-align: center;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  left: 0px;
+  padding-top:20px;
+}

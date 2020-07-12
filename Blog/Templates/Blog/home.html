@@ -1,12 +1,14 @@
 {% extends 'Blog/base.html' %}
 {% block content %}
-  <div class="input-group mb-3">
-    <form class = "form-inline" action="{% url 'blog-home' %}" method="get">
-      <input id= "searchinput" class = "form-control" name="q" type="text" placeholder="{{ query }}" input size='56'>
-      <button class = 'btn btn-primary pull-right ml-2' type="submit">Submit</button>
-      <button class = 'btn btn-danger pull-right ml-2' onclick="document.getElementById('myInput').value = ''" >Clear</button>
-    </form>
-  </div>
+  <form action="{% url 'blog-home' %}" method="get">
+    <div class="input-group mb-3">
+      <input id= "searchinput" class = "form-control" name="q" type="text" placeholder="{{ query }}">
+      <div class="input-group-append">
+        <button class = 'btn btn-primary' type="submit">Submit</button>
+        <button class = 'btn btn-danger' onclick="document.getElementById('searchinput').value = ''" >Clear</button>
+      </div>
+    </div>
+  </form>
   {% if posts %}
     {% for post in posts%}
       <article class="media content-section">

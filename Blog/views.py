@@ -29,7 +29,9 @@ class PostListView(ListView):
         self.posts = Post.objects.all().order_by('-date_posted')
         if self.query:
             self.posts = Post.objects.filter(
-                Q(title__icontains=self.query))
+                Q(title__icontains=self.query) | Q(
+                    content__icontains=self.query) | Q(author__icontains=self.query)
+            )
         else:
             self.query = 'Search...'
 

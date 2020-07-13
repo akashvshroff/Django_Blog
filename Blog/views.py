@@ -34,21 +34,24 @@ class PostListView(ListView):
             self.posts = list(set(self.posts))[0]
         else:
             self.query = 'Search...'
-        return []
+        return self.posts
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        context = super(PostListView, self).get_context_data(**kwargs)
         context['query'] = self.query
-        context['posts'] = self.posts
-        paginator = Paginator(self.posts, self.paginate_by)
+        paginator = Paginator(self.posts, 5)
         page = self.request.GET.get('page')
         try:
-            posts = paginator.page(page)
+            # create Page object for the given page
+            page_object = paginator.page(page)
         except PageNotAnInteger:
-            posts = paginator.page(1)
+            # if page parameter in the query string is not available, return the first page
+            page_object = paginator.page(1)
         except EmptyPage:
-            posts = paginator.page(paginator.num_pages)
-        context['posts'] = posts
+            # if the value of the page parameter exceeds num_pages then return the last page
+            page_object = paginator.page(paginator.num_pages)
+
+        context['posts'] = page_object
         size = 5 if Post.objects.count() >= 5 else Post.objects.count()
         context['random_posts'] = random.sample(list(Post.objects.all()), size)
         return context

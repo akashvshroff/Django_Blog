@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Post
 from django.views.generic import (
     ListView,
@@ -10,10 +10,22 @@ from django.views.generic import (
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.urls import reverse_lazy
+from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
 import random
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+
+class UserPostListView(ListView):
+    model = Post
+    template_name = 'Blog/user_posts.html'
+    context_object_name = 'posts'
+    paginate_by = 5
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Post.objects.filter(author=user).order_by('-date_posted')
 
 
 class PostListView(ListView):

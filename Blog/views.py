@@ -25,7 +25,24 @@ class UserPostListView(ListView):
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
-        return Post.objects.filter(author=user).order_by('-date_posted')
+        self.posts = Post.objects.filter(author=user).order_by('-date_posted')
+        return self.posts
+
+    def get_context_data(self, **kwargs):
+        context = super(UserPostListView, self).get_context_data(**kwargs)
+        paginator = Paginator(self.posts, 5)
+        page = self.request.GET.get('page')
+        try:
+            page_object = paginator.page(page)
+        except PageNotAnInteger:
+            page_object = paginator.page(1)
+        except EmptyPage:
+            page_object = paginator.page(paginator.num_pages)
+
+        context['posts'] = page_object
+        size = 5 if Post.objects.count() >= 5 else Post.objects.count()
+        context['random_posts'] = random.sample(list(Post.objects.all()), size)
+        return context
 
 
 class PostListView(ListView):

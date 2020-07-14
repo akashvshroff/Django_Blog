@@ -142,3 +142,8 @@ EMAIL_HOST_PASSWORD = app_password
 AWS_ACCESS_KEY_ID = aws_access
 AWS_SECRET_ACCESS_KEY = aws_secret
 AWS_STORAGE_BUCKET_NAME = aws_s3_bucket
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -137,3 +138,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = my_email
 EMAIL_HOST_PASSWORD = app_password
+
+AWS_ACCESS_KEY_ID = aws_access
+AWS_SECRET_ACCESS_KEY = aws_secret
+AWS_STORAGE_BUCKET_NAME = aws_s3_bucket

@@ -1,6 +1,6 @@
 # Note:
 
-- You can access the website at this link:
+- You can access the website at this [link](https://mysuperdjangoapp.herokuapp.com/)
 
 # Outline:
 
@@ -8,7 +8,7 @@
 
 # Purpose:
 
-- The backend of web development has always fascinated me and since I am extremely familiar with python, I thought I could try out Django and ultimately learn how to be a full-stack developer. Following along Corey Schafer's wonderful Django tutorial series, that can be found [here,]([https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p)) I built this blog application - adding in my own features such as a search bar, a 'Feeling Lucky' sidebar, footers etc.
+- The backend of web development has always fascinated me and since I am extremely familiar with python, I thought I could try out Django and ultimately learn how to be a full-stack developer. Following along Corey Schafer's wonderful Django tutorial series, that can be found [here,](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p) I built this blog application - adding in my own features such as a search bar, a 'Feeling Lucky' sidebar, footers etc.
 - These additions helped me understand the framework a lot better as they forced me to sift through the documentation and scour stackoverflow for certain errors. I thoroughly enjoyed using Django and will be making a lot more database centric websites soon.
 
 # Description:

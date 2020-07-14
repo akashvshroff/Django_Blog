@@ -25,7 +25,15 @@
       </article>
     {% endfor %}
   {% else %}
-    <h2>No matching results. Try again.</h2>
+    {% if random_posts %}
+      <h2 class='lead'>No matching posts! Try another query!</h2>
+    {% else %}
+      {% if user.is_authenticated %}
+        <h2 class='lead'>Click on new post above to add a post and get started!</h2>
+      {% else %}
+        <h2 class='lead'>Register or login and get started!</h2>
+      {%endif%}
+    {%endif%}
   {% endif %}
 
   {% if is_paginated %}

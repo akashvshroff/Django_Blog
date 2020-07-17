@@ -18,4 +18,4 @@
 - The templates extend on a base template and use the inbuilt class-based views in order to achieve their purpose - mostly by overloading the get_query and get_context_data methods.
 - The crispy form module is also used in order to beautify the forms and maintain the aesthetic across the website.
 - The users app handles the profiles, login, logout etc using the inbuilt user model and creating a new profile model which accepts the user profile picture.
-- Moreover, django-storages and boto3 are used to set-up the AWS S3 portion of the profiles.
+- Moreover, django-storages and boto3 are used to set-up the AWS S3 portion of the profiles and the heroku deployment is made a lot easier by watching [this video](https://www.youtube.com/watch?v=6DI_7Zja8Zc) by Corey Schafer!

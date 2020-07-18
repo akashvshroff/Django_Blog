@@ -116,7 +116,11 @@ a.article-title:hover {
   position: relative;
 }
 
-.footer p small{
+.footer-content .lead p{
+  color:#fff;
+}
+
+.footer-bottom .lead small{
   color:#fff;
 }
 
@@ -140,5 +144,9 @@ a.article-title:hover {
 }
 
 .list-group .list-group-item a:hover{
+  color: #fff;
+}
+
+.description{
   color: #fff;
 }

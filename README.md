@@ -13,6 +13,7 @@
 
 # Description:
 
+- UPDATE: Since deploying the website, I felt that it was desperately missing a dark mode option - and so using localStorage and some basic JS, I added a toggle option where the user can choose which mode they would want to use and it reflects in all the different pages!
 - This blog website houses 2 main apps - blog and users.
 - The blog app is used to control the posts and the process of adding, updating and deleting posts based on Django's MVT framework.
 - The templates extend on a base template and use the inbuilt class-based views in order to achieve their purpose - mostly by overloading the get_query and get_context_data methods.

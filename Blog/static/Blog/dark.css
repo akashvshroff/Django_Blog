@@ -132,9 +132,9 @@ a.article-title:hover {
 }
 
 .list-group .list-group-item a{
-  color: #d6d6d6;
+  color: #4c606e;
 }
 
-.list-group .list-group-item:hover{
-  color: #4c606e
+.list-group .list-group-item a:hover{
+  color: #fff;
 }

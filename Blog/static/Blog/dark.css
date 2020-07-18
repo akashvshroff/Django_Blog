@@ -131,6 +131,10 @@ a.article-title:hover {
   background: #333333;
 }
 
+.list-group .list-group-item a{
+  color: #d6d6d6;
+}
+
 .list-group .list-group-item:hover{
-  background-color: #4c606e
+  color: #4c606e
 }

@@ -64,6 +64,11 @@ a.article-title:hover {
   border-bottom: 1px solid #e3e3e3
 }
 
+.article-metadata a{
+  color: #4c606e;
+}
+
+
 .article-metadata a:hover {
   color: #fff;
   text-decoration: none;
@@ -122,8 +127,8 @@ a.article-title:hover {
 }
 
 .list-group .list-group-item {
+  color: #d6d6d6;
   background: #333333;
-  background-color: #d6d6d6;
 }
 
 .list-group .list-group-item:hover{

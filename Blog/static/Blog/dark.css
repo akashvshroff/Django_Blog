@@ -116,11 +116,11 @@ a.article-title:hover {
   position: relative;
 }
 
-.footer-content .lead p{
+.footer-content p{
   color:#fff;
 }
 
-.footer-bottom .lead small{
+.footer-bottom small{
   color:#fff;
 }
 
@@ -147,6 +147,6 @@ a.article-title:hover {
   color: #fff;
 }
 
-.description{
+.col-md-4 p{
   color: #fff;
 }

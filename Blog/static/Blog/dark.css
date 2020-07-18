@@ -43,7 +43,7 @@ ul {
 }
 
 a.article-title:hover {
-  color: #214565;
+  color: #4c606e;
   text-decoration: none;
 }
 
@@ -58,7 +58,7 @@ a.article-title:hover {
 }
 
 .article-metadata {
-  color: #e9f8ff;
+  color: #4c606e;
   padding-bottom: 1px;
   margin-bottom: 4px;
   border-bottom: 1px solid #e3e3e3
@@ -123,9 +123,9 @@ a.article-title:hover {
 
 .list-group .list-group-item {
   background: #333333;
-  color: #d6d6d6;
+  background-color: #d6d6d6;
 }
 
 .list-group .list-group-item:hover{
-  color: #6897bb
+  background-color: #4c606e
 }
